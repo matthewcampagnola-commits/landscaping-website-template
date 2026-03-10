@@ -3,90 +3,1231 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MM Landscaping | Suffolk County Landscaping</title>
-
+<title>MM Landscaping | Suffolk County's Premier Landscape Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-body{
-font-family: Arial;
-margin:0;
-background:#f5f5f5;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-header{
-background:#1f7a3a;
-color:white;
-padding:40px;
-text-align:center;
-}
+  :root {
+    --green-deep:    #1a2e1a;
+    --green-mid:     #2d5a27;
+    --green-light:   #4a8c3f;
+    --green-pale:    #d4e8c2;
+    --green-mist:    #f0f6eb;
+    --charcoal:      #1e1e1e;
+    --charcoal-mid:  #3a3a3a;
+    --charcoal-soft: #6b6b6b;
+    --cream:         #faf8f4;
+    --white:         #ffffff;
+    --gold:          #b8963e;
+    --shadow-sm: 0 2px 12px rgba(26,46,26,.08);
+    --shadow-md: 0 8px 32px rgba(26,46,26,.12);
+    --shadow-lg: 0 20px 60px rgba(26,46,26,.18);
+    --r: 50px;
+  }
 
-section{
-padding:40px;
-max-width:1000px;
-margin:auto;
-}
+  html { scroll-behavior: smooth; }
 
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-}
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
 
-.service{
-background:white;
-padding:20px;
-border-radius:8px;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    transition: background .4s, box-shadow .4s;
+  }
+  nav.scrolled {
+    background: rgba(250,248,244,.95);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--green-mid);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 600; color: #fff;
+    letter-spacing: .5px;
+  }
+  .nav-logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600;
+    color: var(--green-deep);
+    letter-spacing: .3px;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px; font-weight: 400; letter-spacing: .4px;
+    color: var(--charcoal-mid); text-decoration: none;
+    transition: color .25s;
+  }
+  .nav-links a:hover { color: var(--green-mid); }
+  .nav-cta {
+    background: var(--green-mid); color: #fff !important;
+    padding: 10px 24px; border-radius: var(--r);
+    font-weight: 500 !important;
+    transition: background .25s, transform .2s !important;
+  }
+  .nav-cta:hover { background: var(--green-deep) !important; transform: translateY(-1px); }
 
-footer{
-background:#222;
-color:white;
-text-align:center;
-padding:20px;
-}
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    background: none; border: none; padding: 4px;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--charcoal); border-radius: 2px;
+    transition: .3s;
+  }
+
+  /* mobile menu */
+  .mobile-menu {
+    display: none;
+    position: fixed; inset: 0; z-index: 998;
+    background: var(--cream);
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 36px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 300; color: var(--green-deep);
+    text-decoration: none; letter-spacing: 1px;
+    transition: color .25s;
+  }
+  .mobile-menu a:hover { color: var(--green-mid); }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--green-deep) 0%, #2d5a27 50%, #1a3d1a 100%);
+  }
+  .hero-texture {
+    position: absolute; inset: 0; opacity: .06;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(80px); opacity: .25; pointer-events: none;
+  }
+  .hero-orb-1 { width: 600px; height: 600px; background: #4a8c3f; right: -150px; top: -100px; }
+  .hero-orb-2 { width: 400px; height: 400px; background: #b8963e; left: -80px; bottom: -100px; }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto; padding: 120px 40px 80px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,.12); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.2);
+    padding: 8px 18px; border-radius: var(--r);
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--green-pale); margin-bottom: 28px;
+  }
+  .hero-badge::before { content: '●'; color: #6dbe5a; font-size: 8px; }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 6vw, 76px);
+    font-weight: 300; line-height: 1.08;
+    color: #fff; letter-spacing: -1px;
+    margin-bottom: 24px;
+  }
+  .hero-title em { font-style: italic; color: var(--green-pale); }
+  .hero-sub {
+    font-size: 16px; line-height: 1.7; font-weight: 300;
+    color: rgba(255,255,255,.75);
+    margin-bottom: 44px; max-width: 420px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; color: var(--green-deep);
+    padding: 16px 32px; border-radius: var(--r);
+    font-size: 14px; font-weight: 500; letter-spacing: .3px;
+    text-decoration: none; border: none; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,.2);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,.25); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: #fff;
+    padding: 15px 32px; border-radius: var(--r);
+    font-size: 14px; font-weight: 400;
+    text-decoration: none; border: 1px solid rgba(255,255,255,.4);
+    transition: border-color .25s, background .25s;
+  }
+  .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 56px; padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,.15);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 600; color: #fff;
+    line-height: 1;
+  }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,.6); letter-spacing: .5px; margin-top: 4px; }
+
+  .hero-image-side {
+    position: relative; display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card {
+    background: rgba(255,255,255,.08); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 24px; padding: 32px;
+    width: 100%; max-width: 380px;
+  }
+  .hero-card-img {
+    width: 100%; aspect-ratio: 4/3; border-radius: 16px; overflow: hidden; margin-bottom: 20px;
+    background: linear-gradient(160deg, #2d5a27 0%, #4a8c3f 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-img svg { width: 100px; opacity: .4; }
+  .hero-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; color: #fff; font-weight: 400; margin-bottom: 8px;
+  }
+  .hero-card p { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.6; }
+  .hero-card-row {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+  .rating-stars { color: #f5c842; font-size: 14px; }
+  .rating-text { font-size: 12px; color: rgba(255,255,255,.7); }
+
+  .hero-floating-badge {
+    position: absolute; top: -20px; right: -20px;
+    background: var(--gold); color: #fff;
+    padding: 14px 18px; border-radius: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px; line-height: 1.3; text-align: center;
+    box-shadow: 0 8px 24px rgba(184,150,62,.4);
+  }
+
+  /* ─── SECTION COMMONS ─── */
+  section { padding: 100px 40px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--green-mid); font-weight: 500; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-tag::before { content: ''; display: block; width: 32px; height: 1px; background: var(--green-mid); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 54px); font-weight: 300;
+    color: var(--green-deep); line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 16px; color: var(--charcoal-soft);
+    line-height: 1.7; max-width: 560px;
+  }
+
+  /* ─── SERVICES ─── */
+  .services { background: var(--white); }
+  .services-header { text-align: center; margin-bottom: 64px; }
+  .services-header .section-tag { justify-content: center; }
+  .services-header .section-tag::before { display: none; }
+  .services-header .section-sub { margin: 0 auto; }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .service-card {
+    background: var(--cream); border-radius: 20px;
+    padding: 36px 32px;
+    border: 1px solid rgba(26,46,26,.06);
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+    cursor: default;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--green-pale);
+  }
+  .service-card.featured {
+    background: var(--green-deep); color: #fff;
+    border-color: transparent;
+  }
+  .service-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--green-pale); display: flex; align-items: center;
+    justify-content: center; margin-bottom: 24px; font-size: 24px;
+  }
+  .service-card.featured .service-icon { background: rgba(255,255,255,.15); }
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400; margin-bottom: 12px;
+    color: var(--green-deep);
+  }
+  .service-card.featured h3 { color: #fff; }
+  .service-card p {
+    font-size: 14px; line-height: 1.7; color: var(--charcoal-soft);
+  }
+  .service-card.featured p { color: rgba(255,255,255,.7); }
+  .service-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 20px; font-size: 13px; font-weight: 500;
+    color: var(--green-mid); text-decoration: none;
+    transition: gap .2s;
+  }
+  .service-card.featured .service-link { color: var(--green-pale); }
+  .service-link:hover { gap: 10px; }
+
+  /* ─── BEFORE/AFTER ─── */
+  .gallery { background: var(--green-mist); }
+  .gallery-header { margin-bottom: 56px; }
+  .gallery-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .ba-card {
+    background: #fff; border-radius: 20px; overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .3s, transform .3s;
+  }
+  .ba-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+  .ba-images {
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .ba-panel {
+    position: relative; aspect-ratio: 4/3; overflow: hidden;
+  }
+  .ba-panel-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 48px;
+  }
+  .ba-panel.before .ba-panel-inner { background: linear-gradient(135deg, #8ba888, #c4c4a8); }
+  .ba-panel.after .ba-panel-inner { background: linear-gradient(135deg, #2d5a27, #4a8c3f); }
+  .ba-label {
+    position: absolute; top: 12px; left: 12px;
+    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+    font-weight: 500; color: #fff;
+    background: rgba(0,0,0,.4); backdrop-filter: blur(4px);
+    padding: 4px 10px; border-radius: 20px;
+  }
+  .ba-info { padding: 20px 24px; }
+  .ba-info h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400; color: var(--green-deep);
+    margin-bottom: 4px;
+  }
+  .ba-info p { font-size: 13px; color: var(--charcoal-soft); }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials { background: var(--white); }
+  .testimonials-header { text-align: center; margin-bottom: 56px; }
+  .testimonials-header .section-tag { justify-content: center; }
+  .testimonials-header .section-tag::before { display: none; }
+
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .testimonial-card {
+    background: var(--cream); border-radius: 20px; padding: 32px;
+    border: 1px solid rgba(26,46,26,.06);
+    transition: transform .3s, box-shadow .3s;
+  }
+  .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); }
+  .testimonial-stars { color: #f5c842; font-size: 16px; margin-bottom: 16px; letter-spacing: 2px; }
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; font-weight: 300; line-height: 1.6;
+    color: var(--charcoal); margin-bottom: 24px;
+    font-style: italic;
+  }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--green-pale); display: flex; align-items: center;
+    justify-content: center; font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 600; color: var(--green-mid);
+  }
+  .author-name { font-size: 14px; font-weight: 500; color: var(--charcoal); }
+  .author-location { font-size: 12px; color: var(--charcoal-soft); }
+
+  /* ─── ABOUT ─── */
+  .about { background: var(--green-deep); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .about .section-tag { color: var(--green-pale); }
+  .about .section-tag::before { background: var(--green-pale); }
+  .about .section-title { color: #fff; }
+  .about-body {
+    font-size: 16px; line-height: 1.8; color: rgba(255,255,255,.7);
+    margin-bottom: 32px;
+  }
+  .about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .value-item {
+    background: rgba(255,255,255,.06); border-radius: 14px;
+    padding: 20px; border: 1px solid rgba(255,255,255,.1);
+  }
+  .value-item h4 {
+    font-size: 14px; font-weight: 500; color: var(--green-pale); margin-bottom: 4px;
+  }
+  .value-item p { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.5; }
+
+  .about-visual {
+    position: relative;
+  }
+  .about-main-card {
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
+    border-radius: 24px; padding: 40px;
+    backdrop-filter: blur(8px);
+  }
+  .about-photo {
+    width: 100%; aspect-ratio: 1; border-radius: 18px;
+    background: linear-gradient(135deg, #2d5a27, #4a8c3f 60%, #1a2e1a);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 80px; margin-bottom: 24px;
+  }
+  .about-card-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 400; color: #fff; margin-bottom: 6px;
+  }
+  .about-card-info p { font-size: 14px; color: rgba(255,255,255,.6); }
+  .about-card-certs {
+    display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;
+  }
+  .cert-badge {
+    font-size: 11px; letter-spacing: .5px;
+    background: rgba(255,255,255,.1); color: var(--green-pale);
+    padding: 6px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,.15);
+  }
+
+  /* ─── SERVICE AREA ─── */
+  .service-area { background: var(--cream); }
+  .service-area-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  }
+  .towns-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 32px;
+  }
+  .town-pill {
+    background: #fff; border: 1px solid rgba(26,46,26,.1);
+    border-radius: 10px; padding: 12px 16px;
+    font-size: 13px; font-weight: 400; color: var(--charcoal-mid);
+    text-align: center; transition: background .2s, border-color .2s, color .2s;
+    cursor: default;
+  }
+  .town-pill:hover {
+    background: var(--green-pale); border-color: var(--green-light); color: var(--green-deep);
+  }
+
+  .area-highlight {
+    background: var(--green-mid); border-radius: 24px; padding: 48px 40px;
+    color: #fff;
+  }
+  .area-highlight h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 300; margin-bottom: 16px; line-height: 1.2;
+  }
+  .area-highlight p {
+    font-size: 15px; color: rgba(255,255,255,.8); line-height: 1.7; margin-bottom: 32px;
+  }
+  .area-contact-item {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 16px;
+  }
+  .area-contact-icon {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(255,255,255,.15);
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+    flex-shrink: 0;
+  }
+  .area-contact-item a {
+    color: #fff; text-decoration: none; font-size: 15px; font-weight: 400;
+  }
+  .area-contact-item span { font-size: 12px; color: rgba(255,255,255,.6); display: block; }
+
+  /* ─── CONTACT ─── */
+  .contact { background: var(--white); }
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start;
+  }
+  .contact-form {
+    background: var(--cream); border-radius: 24px; padding: 48px 40px;
+    box-shadow: var(--shadow-sm);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block; font-size: 12px; letter-spacing: .8px; text-transform: uppercase;
+    font-weight: 500; color: var(--charcoal-mid); margin-bottom: 8px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; background: #fff; border: 1px solid rgba(26,46,26,.12);
+    border-radius: 12px; padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--charcoal);
+    transition: border-color .25s, box-shadow .25s; outline: none;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--green-mid); box-shadow: 0 0 0 3px rgba(45,90,39,.1);
+  }
+  .form-group textarea { height: 120px; resize: none; }
+  .form-submit {
+    width: 100%; background: var(--green-mid); color: #fff;
+    border: none; border-radius: var(--r); padding: 16px;
+    font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500;
+    cursor: pointer; letter-spacing: .3px;
+    transition: background .25s, transform .2s, box-shadow .25s;
+    box-shadow: 0 4px 20px rgba(45,90,39,.3);
+  }
+  .form-submit:hover {
+    background: var(--green-deep); transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(45,90,39,.4);
+  }
+  .form-note {
+    font-size: 12px; color: var(--charcoal-soft);
+    text-align: center; margin-top: 14px;
+  }
+
+  .contact-info h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 300; color: var(--green-deep);
+    line-height: 1.1; margin-bottom: 20px;
+  }
+  .contact-info p {
+    font-size: 16px; color: var(--charcoal-soft); line-height: 1.7; margin-bottom: 40px;
+  }
+  .contact-list { list-style: none; }
+  .contact-list li {
+    display: flex; align-items: flex-start; gap: 16px;
+    margin-bottom: 28px;
+  }
+  .contact-list-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    background: var(--green-mist); border: 1px solid var(--green-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .contact-list-text strong {
+    display: block; font-size: 14px; font-weight: 500; color: var(--charcoal); margin-bottom: 2px;
+  }
+  .contact-list-text a {
+    font-size: 15px; color: var(--green-mid); text-decoration: none;
+    transition: color .2s;
+  }
+  .contact-list-text a:hover { color: var(--green-deep); }
+  .contact-list-text span { font-size: 14px; color: var(--charcoal-soft); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--charcoal); color: rgba(255,255,255,.6);
+    padding: 64px 40px 32px;
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px;
+    margin-bottom: 48px; padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .footer-brand { }
+  .footer-logo {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+  }
+  .footer-logo-mark {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--green-mid); display: flex; align-items: center;
+    justify-content: center; font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-weight: 600; color: #fff;
+  }
+  .footer-logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; color: #fff; font-weight: 400;
+  }
+  .footer-tagline { font-size: 14px; line-height: 1.7; max-width: 260px; margin-bottom: 24px; }
+  .footer-socials { display: flex; gap: 10px; }
+  .social-btn {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; text-decoration: none; color: rgba(255,255,255,.6);
+    transition: background .25s, color .25s;
+  }
+  .social-btn:hover { background: var(--green-mid); color: #fff; }
+  .footer-col h4 {
+    font-size: 13px; letter-spacing: 1px; text-transform: uppercase;
+    font-weight: 500; color: #fff; margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a {
+    font-size: 14px; color: rgba(255,255,255,.6); text-decoration: none;
+    transition: color .2s;
+  }
+  .footer-col ul li a:hover { color: var(--green-pale); }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-bottom p { font-size: 13px; }
+  .footer-bottom a { color: rgba(255,255,255,.4); text-decoration: none; font-size: 13px; }
+
+  /* ─── SUCCESS MESSAGE ─── */
+  .success-msg {
+    display: none; background: var(--green-mist); border: 1px solid var(--green-pale);
+    border-radius: 12px; padding: 16px; text-align: center;
+    font-size: 14px; color: var(--green-mid); margin-top: 16px;
+  }
+  .success-msg.show { display: block; }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s, transform .7s; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .hero-content { grid-template-columns: 1fr; gap: 48px; }
+    .hero-image-side { display: none; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .service-area-inner { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  @media (max-width: 768px) {
+    section { padding: 72px 24px; }
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-content { padding: 100px 24px 60px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .contact-form { padding: 32px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .hero-stats { gap: 24px; }
+    .towns-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-values { grid-template-columns: 1fr; }
+  }
 </style>
-
 </head>
-
 <body>
 
-<header>
-<h1>MM Landscaping</h1>
-<p>Professional Landscaping Services in Suffolk County, Long Island</p>
-</header>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">MM</div>
+    <span class="nav-logo-text">MM Landscaping</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#service-area">Service Area</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-<section>
-<h2>Our Services</h2>
-
-<div class="services">
-
-<div class="service">
-<h3>Landscape Design</h3>
-<p>Custom landscaping plans to transform your outdoor space.</p>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#gallery" class="mobile-link">Gallery</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#service-area" class="mobile-link">Service Area</a>
+  <a href="#contact" class="mobile-link">Get a Quote</a>
 </div>
 
-<div class="service">
-<h3>Planting</h3>
-<p>Professional planting and garden installation.</p>
-</div>
-
-<div class="service">
-<h3>Mulching</h3>
-<p>Improve soil health and curb appeal with fresh mulch.</p>
-</div>
-
-<div class="service">
-<h3>Property Cleanups</h3>
-<p>Seasonal yard cleanups to keep your property looking great.</p>
-</div>
-
-</div>
-
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">Serving Suffolk County, Long Island</div>
+      <h1 class="hero-title">
+        Landscapes <em>crafted</em><br>to last a lifetime
+      </h1>
+      <p class="hero-sub">
+        From concept to curb appeal — MM Landscaping transforms outdoor spaces across Suffolk County with expert design, installation, and maintenance.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">
+          <span>Get a Free Quote</span>
+          <span>→</span>
+        </a>
+        <a href="#gallery" class="btn-outline">
+          <span>View Our Work</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="stat-num">850+</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div>
+          <div class="stat-num">5★</div>
+          <div class="stat-label">Average Rating</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image-side">
+      <div class="hero-card">
+        <div class="hero-card-img">
+          <svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 60 Q30 30 50 20 Q70 10 80 60Z" fill="rgba(255,255,255,0.3)"/>
+            <path d="M10 60 Q20 40 35 35 Q50 30 60 60Z" fill="rgba(255,255,255,0.2)"/>
+            <rect x="45" y="55" width="10" height="20" rx="2" fill="rgba(255,255,255,0.4)"/>
+            <rect x="0" y="68" width="100" height="12" rx="2" fill="rgba(255,255,255,0.15)"/>
+          </svg>
+        </div>
+        <h3>Smithtown Backyard Transformation</h3>
+        <p>Full landscape redesign with native plantings, bluestone patio, and lighting.</p>
+        <div class="hero-card-row">
+          <span class="rating-stars">★★★★★</span>
+          <span class="rating-text">— Mike & Carol T., Smithtown</span>
+        </div>
+      </div>
+      <div class="hero-floating-badge">
+        Licensed &<br>Insured<br>✓ NY Certified
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">Full-service landscaping<br>for Long Island homes</h2>
+      <p class="section-sub">Whether you're starting from scratch or refreshing your existing landscape, we bring expertise to every stage of your project.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🌿</div>
+        <h3>Landscape Design</h3>
+        <p>Custom design plans tailored to your property, lifestyle, and budget. We create spaces that are both beautiful and functional.</p>
+        <a href="#contact" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card featured reveal">
+        <div class="service-icon">🏡</div>
+        <h3>Full Installation</h3>
+        <p>From plant installation to hardscaping, we handle every detail — trees, shrubs, sod, mulch, edging, and more.</p>
+        <a href="#contact" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🌸</div>
+        <h3>Seasonal Planting</h3>
+        <p>Year-round color and curb appeal with expertly chosen seasonal plantings that thrive in Long Island's climate.</p>
+        <a href="#contact" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🪨</div>
+        <h3>Hardscaping</h3>
+        <p>Patios, walkways, retaining walls, and outdoor kitchens crafted in natural stone, pavers, and more.</p>
+        <a href="#contact" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">💧</div>
+        <h3>Irrigation Systems</h3>
+        <p>Smart irrigation design and installation that keeps your landscape lush while conserving water year-round.</p>
+        <a href="#contact" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">✂️</div>
+        <h3>Maintenance Programs</h3>
+        <p>Weekly, bi-weekly, or seasonal maintenance plans to keep your property looking its absolute best all year long.</p>
+        <a href="#contact" class="service-link">Learn more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE/AFTER GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="gallery-header reveal">
+      <div class="section-tag">Transformations</div>
+      <h2 class="section-title">Before & after</h2>
+      <p class="section-sub">Real results from real Suffolk County homeowners. Every project tells a story of transformation.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="ba-card reveal">
+        <div class="ba-images">
+          <div class="ba-panel before">
+            <div class="ba-panel-inner">🌾</div>
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-panel after">
+            <div class="ba-panel-inner">🌳</div>
+            <span class="ba-label">After</span>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h4>Backyard Oasis — Huntington</h4>
+          <p>Overgrown yard transformed into a lush retreat with native plantings & stone patio</p>
+        </div>
+      </div>
+      <div class="ba-card reveal">
+        <div class="ba-images">
+          <div class="ba-panel before">
+            <div class="ba-panel-inner">🪨</div>
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-panel after">
+            <div class="ba-panel-inner">🌺</div>
+            <span class="ba-label">After</span>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h4>Front Yard Curb Appeal — Smithtown</h4>
+          <p>Barren front yard redesigned with layered plantings, sod, and a welcoming walkway</p>
+        </div>
+      </div>
+      <div class="ba-card reveal">
+        <div class="ba-images">
+          <div class="ba-panel before">
+            <div class="ba-panel-inner">🌱</div>
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-panel after">
+            <div class="ba-panel-inner">🏡</div>
+            <span class="ba-label">After</span>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h4>Patio & Garden — Sayville</h4>
+          <p>Uneven yard leveled, new bluestone patio installed with raised garden beds</p>
+        </div>
+      </div>
+      <div class="ba-card reveal">
+        <div class="ba-images">
+          <div class="ba-panel before">
+            <div class="ba-panel-inner">🍂</div>
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-panel after">
+            <div class="ba-panel-inner">🌿</div>
+            <span class="ba-label">After</span>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h4>Side Yard Makeover — Bay Shore</h4>
+          <p>Neglected side yard converted into a lush privacy garden with evergreen screening</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <div class="section-tag">Client Stories</div>
+      <h2 class="section-title">What our neighbors say</h2>
+      <p class="section-sub">We're proud to have earned the trust of hundreds of Suffolk County families.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"MM Landscaping completely transformed our backyard. They listened to everything we wanted and delivered beyond our expectations. Our neighbors ask about it constantly."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JR</div>
+          <div>
+            <div class="author-name">Jennifer R.</div>
+            <div class="author-location">Smithtown, NY</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Professional, punctual, and the quality of work is outstanding. They installed a full patio and garden beds — the craftsmanship is truly first class. Highly recommend."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">DM</div>
+          <div>
+            <div class="author-name">David M.</div>
+            <div class="author-location">Huntington, NY</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"We've used MM Landscaping for three years and wouldn't go anywhere else. Their maintenance crew keeps everything perfect, and they're always responsive and fair."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">ST</div>
+          <div>
+            <div class="author-name">Susan T.</div>
+            <div class="author-location">Bay Shore, NY</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <div class="section-tag">Our Story</div>
+        <h2 class="section-title">Rooted in Suffolk County for over a decade</h2>
+        <p class="about-body">
+          MM Landscaping was founded with a simple belief: every home deserves a landscape that reflects its owners' vision. We're a locally owned and operated company, and we take pride in every project we touch — big or small.
+        </p>
+        <p class="about-body">
+          Our team of certified landscape professionals brings creativity, horticultural expertise, and genuine care to each property. We work with Long Island's unique soil, climate, and environment to create landscapes that thrive year after year.
+        </p>
+        <div class="about-values">
+          <div class="value-item">
+            <h4>🌱 Local Expertise</h4>
+            <p>Deep knowledge of Long Island's plant life and seasonal patterns</p>
+          </div>
+          <div class="value-item">
+            <h4>🤝 Honest Pricing</h4>
+            <p>Detailed, transparent quotes with no hidden fees or surprises</p>
+          </div>
+          <div class="value-item">
+            <h4>✅ Fully Licensed</h4>
+            <p>NY State licensed, fully insured, and background-checked crew</p>
+          </div>
+          <div class="value-item">
+            <h4>♻️ Sustainable</h4>
+            <p>Eco-friendly practices and native plantings that support local wildlife</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <div class="about-main-card">
+          <div class="about-photo">🌳</div>
+          <div class="about-card-info">
+            <h3>MM Landscaping Team</h3>
+            <p>Suffolk County, Long Island — Est. 2013</p>
+            <div class="about-card-certs">
+              <span class="cert-badge">NY Licensed</span>
+              <span class="cert-badge">Fully Insured</span>
+              <span class="cert-badge">PLANET Member</span>
+              <span class="cert-badge">5★ Rated</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section class="service-area" id="service-area">
+  <div class="container">
+    <div class="service-area-inner">
+      <div class="reveal">
+        <div class="section-tag">Where We Work</div>
+        <h2 class="section-title">Serving all of<br>Suffolk County</h2>
+        <p class="section-sub">From the North Shore to the South Shore, we serve homeowners and businesses throughout Suffolk County and neighboring areas.</p>
+        <div class="towns-grid">
+          <div class="town-pill">Smithtown</div>
+          <div class="town-pill">Huntington</div>
+          <div class="town-pill">Bay Shore</div>
+          <div class="town-pill">Sayville</div>
+          <div class="town-pill">Islip</div>
+          <div class="town-pill">Hauppauge</div>
+          <div class="town-pill">Commack</div>
+          <div class="town-pill">Brentwood</div>
+          <div class="town-pill">Central Islip</div>
+          <div class="town-pill">Babylon</div>
+          <div class="town-pill">Amityville</div>
+          <div class="town-pill">Lindenhurst</div>
+          <div class="town-pill">Patchogue</div>
+          <div class="town-pill">Coram</div>
+          <div class="town-pill">Ronkonkoma</div>
+          <div class="town-pill">Port Jefferson</div>
+          <div class="town-pill">Setauket</div>
+          <div class="town-pill">Riverhead</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="area-highlight">
+          <h3>Ready to start your landscape project?</h3>
+          <p>We offer free on-site consultations throughout Suffolk County. Our team will assess your property and provide a detailed, no-obligation quote.</p>
+          <div class="area-contact-item">
+            <div class="area-contact-icon">📞</div>
+            <div>
+              <span>Call or Text</span>
+              <a href="tel:+16315550100">(631) 555-0100</a>
+            </div>
+          </div>
+          <div class="area-contact-item">
+            <div class="area-contact-icon">📧</div>
+            <div>
+              <span>Email Us</span>
+              <a href="mailto:info@mmlandscaping.com">info@mmlandscaping.com</a>
+            </div>
+          </div>
+          <div class="area-contact-item">
+            <div class="area-contact-icon">📍</div>
+            <div>
+              <span>Based In</span>
+              <a href="#">Suffolk County, Long Island, NY</a>
+            </div>
+          </div>
+          <div style="margin-top: 32px;">
+            <a href="#contact" class="btn-primary">Get My Free Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-info reveal">
+        <div class="section-tag">Contact Us</div>
+        <h2>Let's build something<br><em style="font-style:italic; color: var(--green-mid);">beautiful</em> together</h2>
+        <p>Fill out the form and a member of our team will be in touch within one business day to schedule your free consultation.</p>
+        <ul class="contact-list">
+          <li>
+            <div class="contact-list-icon">📞</div>
+            <div class="contact-list-text">
+              <strong>Phone / Text</strong>
+              <a href="tel:+16315550100">(631) 555-0100</a>
+            </div>
+          </li>
+          <li>
+            <div class="contact-list-icon">📧</div>
+            <div class="contact-list-text">
+              <strong>Email</strong>
+              <a href="mailto:info@mmlandscaping.com">info@mmlandscaping.com</a>
+            </div>
+          </li>
+          <li>
+            <div class="contact-list-icon">🕐</div>
+            <div class="contact-list-text">
+              <strong>Hours</strong>
+              <span>Mon–Fri: 7am–6pm · Sat: 8am–4pm</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; color:var(--green-deep); margin-bottom:28px;">Request a Free Quote</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="John" id="fname">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith" id="lname">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="(631) 000-0000" id="phone">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="john@email.com" id="email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Town / City</label>
+          <input type="text" placeholder="e.g. Smithtown, Huntington, Bay Shore..." id="town">
+        </div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select id="service">
+            <option value="">Select a service...</option>
+            <option>Landscape Design</option>
+            <option>Full Installation</option>
+            <option>Hardscaping / Patio</option>
+            <option>Irrigation System</option>
+            <option>Seasonal Planting</option>
+            <option>Maintenance Program</option>
+            <option>Other / Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Project</label>
+          <textarea placeholder="Describe your yard, goals, timeline, and any other details..." id="message"></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit()">Send My Request →</button>
+        <p class="form-note">🔒 Your info is private. No spam, ever.</p>
+        <div class="success-msg" id="successMsg">
+          ✅ Thank you! We'll be in touch within one business day.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-<p>MM Landscaping | Suffolk County NY</p>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-mark">MM</div>
+          <span class="footer-logo-text">MM Landscaping</span>
+        </div>
+        <p class="footer-tagline">Suffolk County's trusted landscaping professionals. Transforming outdoor spaces since 2013.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          <a href="#" class="social-btn" aria-label="Instagram">in</a>
+          <a href="#" class="social-btn" aria-label="Houzz">h</a>
+          <a href="#" class="social-btn" aria-label="Google">G</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Landscape Design</a></li>
+          <li><a href="#services">Full Installation</a></li>
+          <li><a href="#services">Hardscaping</a></li>
+          <li><a href="#services">Irrigation</a></li>
+          <li><a href="#services">Seasonal Planting</a></li>
+          <li><a href="#services">Maintenance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service Areas</h4>
+        <ul>
+          <li><a href="#service-area">Smithtown</a></li>
+          <li><a href="#service-area">Huntington</a></li>
+          <li><a href="#service-area">Bay Shore</a></li>
+          <li><a href="#service-area">Sayville</a></li>
+          <li><a href="#service-area">Hauppauge</a></li>
+          <li><a href="#service-area">All of Suffolk County</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 MM Landscaping. All rights reserved. Suffolk County, Long Island, NY.</p>
+      <a href="#">Licensed & Insured · NY State Certified</a>
+    </div>
+  </div>
 </footer>
 
+<script>
+  // ─── NAV SCROLL ───
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // ─── HAMBURGER ───
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  let menuOpen = false;
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('open', menuOpen);
+    const spans = hamburger.querySelectorAll('span');
+    if (menuOpen) {
+      spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+    } else {
+      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    }
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    });
+  });
+
+  // ─── SCROLL REVEAL ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ─── FORM SUBMIT ───
+  function handleSubmit() {
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const service = document.getElementById('service').value;
+    if (!fname || !email || !service) {
+      alert('Please fill in your name, email, and service type to continue.');
+      return;
+    }
+    const msg = document.getElementById('successMsg');
+    msg.classList.add('show');
+    document.querySelector('.form-submit').textContent = '✓ Request Sent!';
+    document.querySelector('.form-submit').style.background = 'var(--green-light)';
+    setTimeout(() => msg.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+  }
+
+  // ─── SMOOTH ANCHORS ───
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
 </body>
+</html>
 </html>
